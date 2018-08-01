@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import HelloWorld from "./HelloWorld";
+import { createStore } from "redux";
+import reducer from "./reducers";
+
+const store = createStore (reducer, initialState);
+const initialState = { tech: "React"};
 
 class App extends Component {
-  state = {
-    tech: "React"
-  };
+  
   render() {
-    return <HelloWorld tech={this.state.tech} />;
+    return <HelloWorld tech={ store.getState().tech} />;
   }
 }
 
